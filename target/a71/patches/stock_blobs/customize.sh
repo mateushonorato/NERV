@@ -119,8 +119,6 @@ DELETE_FROM_WORK_DIR "odm" "etc/vintf"
 DELETE_FROM_WORK_DIR "odm" "etc/permissions"
 LOG_STEP_OUT
 
-LOG_STEP_IN "- Removing Legacy HWComposer"
-DELETE_FROM_WORK_DIR "vendor" "bin/hw/android.hardware.graphics.composer@2.4-service"
-DELETE_FROM_WORK_DIR "vendor" "etc/init/android.hardware.graphics.composer@2.4-service.rc"
-DELETE_FROM_WORK_DIR "vendor" "etc/vintf/manifest/android.hardware.graphics.composer-qti-display.xml"
+LOG_STEP_IN "- Adding pa1qxx surfaceflinger"
+ADD_TO_WORK_DIR "pa1qxx" "system" "bin/surfaceflinger" 0 2000 755 "u:object_r:surfaceflinger_exec:s0"
 LOG_STEP_OUT
