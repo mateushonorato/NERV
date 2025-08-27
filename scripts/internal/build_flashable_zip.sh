@@ -103,7 +103,7 @@ CREATE_ROM_ZIP()
     [ -f "$STORED_LIST" ] || [ -f "$COMPRESSED_LIST" ] && rm -f "$STORED_LIST" "$COMPRESSED_LIST"
     touch "$STORED_LIST" "$COMPRESSED_LIST"
 
-    EVAL "rm -f \"$TMP_DIR/rom.zip\"" || exit 1
+    EVAL "rm -f \"$OUT_DIR/rom.zip\"" || exit 1
 
     find "$TMP_DIR" -type f \( -name "*.new.dat.br" -o -name "*.patch.dat" \) >> "$STORED_LIST"
     find "$TMP_DIR/META-INF" -type f >> "$STORED_LIST"
@@ -113,8 +113,8 @@ CREATE_ROM_ZIP()
         ! -name "*.patch.dat" \
         ! -path "$TMP_DIR/META-INF/*" >> "$COMPRESSED_LIST"
 
-    sed -i "s.$TMP_DIR/..g" "$STORED_LIST" \
-        && sed -i "s.$TMP_DIR/..g" "$COMPRESSED_LIST"
+    sed -i "s|^$TMP_DIR/||g" "$STORED_LIST" \
+        && sed -i "s|^$TMP_DIR/||g" "$COMPRESSED_LIST"
 
     (
     cd "$TMP_DIR" || exit 1
