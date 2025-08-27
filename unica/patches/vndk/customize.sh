@@ -1,3 +1,7 @@
+if [ "$TARGET_SINGLE_SYSTEM_IMAGE" == "self" ]; then
+    return 0
+fi
+
 # [
 ADD_TARGET_VNDK_APEX() {
     case "$TARGET_VENDOR_API_LEVEL" in

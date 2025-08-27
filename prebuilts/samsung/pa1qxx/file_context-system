@@ -274,4 +274,8 @@
 /system/media/audio/ui/LowBattery_Calm\.ogg u:object_r:system_file:s0
 /system/media/audio/ui/SIP_Modifier_Retro\.ogg u:object_r:system_file:s0
 /system/media/audio/ui/LowBattery_Retro\.ogg u:object_r:system_file:s0
+/system/priv-app/Moments u:object_r:system_file:s0
+/system/priv-app/Moments/Moments\.apk u:object_r:system_file:s0
+/system/priv-app/SamsungSmartSuggestions u:object_r:system_file:s0
+/system/priv-app/SamsungSmartSuggestions/SamsungSmartSuggestions\.apk u:object_r:system_file:s0
 /system/priv-app/NfcNci/lib/arm64/libnfc_sec_jni\.so u:object_r:system_file:s0

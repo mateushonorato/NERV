@@ -1,3 +1,7 @@
+if [ "$TARGET_SINGLE_SYSTEM_IMAGE" == "self" ]; then
+    return 0
+fi
+
 # [
 GET_FP_SENSOR_TYPE()
 {

@@ -1,3 +1,7 @@
+if [ "$TARGET_SINGLE_SYSTEM_IMAGE" == "self" ]; then
+    return 0
+fi
+
 SOURCE_FIRMWARE_PATH="$FW_DIR/$(echo -n "$SOURCE_FIRMWARE" | sed 's./._.g' | rev | cut -d "_" -f2- | rev)"
 
 if [[ -d "$SRC_DIR/target/$TARGET_CODENAME/overlay" ]]; then

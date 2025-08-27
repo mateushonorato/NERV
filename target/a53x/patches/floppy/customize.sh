@@ -5,7 +5,6 @@ FLOPPY_TAR=$(echo "$LATEST" |
 [ -d "$TMP_DIR" ] && rm -rf "$TMP_DIR"
 mkdir -p "$TMP_DIR"
 
-LOG "- Downloading $(basename "$FLOPPY_TAR")"
 DOWNLOAD_FILE "$FLOPPY_TAR" "$TMP_DIR/floppy.tar"
 
 LOG "- Extracting kernel binaries"

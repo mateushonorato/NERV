@@ -1,9 +1,9 @@
 From 75d15cadcaac7f063d186858dac86185a7c991a0 Mon Sep 17 00:00:00 2001
-From: Ksawlii <ksawery.blaszczak@proton.me>
+From: Majaahh <maja.blaszczak@proton.me>
 Date: Sat, 19 Apr 2025 21:41:52 +0200
 Subject: [PATCH] Fix Adaptive Refresh Rate Color Flickering
 
-Signed-off-by: Ksawlii <ksawery.blaszczak@proton.me>
+Signed-off-by: Majaahh <maja.blaszczak@proton.me>
 ---
  dtsi.0 | 22 +++++++++++-----------
  dtsi.1 | 22 +++++++++++-----------

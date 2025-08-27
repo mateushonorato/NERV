@@ -58,11 +58,14 @@ APPLY_MODULE()
 
     READ_AND_APPLY_PROPS "$MODPATH"
 
-    if [ -d "$MODPATH/smali" ]; then
-        while IFS= read -r f; do
-            APPLY_SMALI_PATCHES "$MODPATH/smali" "$f"
-        done < <(find "$MODPATH/smali" -type d \( -name "*.apk" -o -name "*.jar" \) | sed "s|$MODPATH/smali/||")
+    if [ "$TARGET_SINGLE_SYSTEM_IMAGE" != "self" ]; then
+        if [ -d "$MODPATH/smali" ]; then
+            while IFS= read -r f; do
+                APPLY_SMALI_PATCHES "$MODPATH/smali" "$f"
+            done < <(find "$MODPATH/smali" -type d \( -name "*.apk" -o -name "*.jar" \) | sed "s|$MODPATH/smali/||")
+        fi
     fi
+
 
     [ -f "$MODPATH/customize.sh" ] && . "$MODPATH/customize.sh"
 
