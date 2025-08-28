@@ -288,8 +288,6 @@ GENERATE_OTA_METADATA()
 GENERATE_UPDATER_SCRIPT()
 {
     local SCRIPT_FILE="$TMP_DIR/META-INF/com/google/android/updater-script"
-    local BROTLI_EXTENSION
-    $DEBUG || BROTLI_EXTENSION=".br"
 
     local PARTITION_COUNT=0
     local HAS_BOOT=false
@@ -312,14 +310,14 @@ GENERATE_UPDATER_SCRIPT()
     [ -f "$TMP_DIR/init_boot.img" ] && HAS_INIT_BOOT=true
     [ -f "$TMP_DIR/vendor_boot.img" ] && HAS_VENDOR_BOOT=true
     [ -f "$TMP_DIR/unsparse_super_empty.img" ] && HAS_SUPER_EMPTY=true
-    [ -f "$TMP_DIR/system.new.dat${BROTLI_EXTENSION}" ] && HAS_SYSTEM=true
-    [ -f "$TMP_DIR/vendor.new.dat${BROTLI_EXTENSION}" ] && HAS_VENDOR=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
-    [ -f "$TMP_DIR/product.new.dat${BROTLI_EXTENSION}" ] && HAS_PRODUCT=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
-    [ -f "$TMP_DIR/system_ext.new.dat${BROTLI_EXTENSION}" ] && HAS_SYSTEM_EXT=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
-    [ -f "$TMP_DIR/odm.new.dat${BROTLI_EXTENSION}" ] && HAS_ODM=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
-    [ -f "$TMP_DIR/vendor_dlkm.new.dat${BROTLI_EXTENSION}" ] && HAS_VENDOR_DLKM=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
-    [ -f "$TMP_DIR/odm_dlkm.new.dat${BROTLI_EXTENSION}" ] && HAS_ODM_DLKM=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
-    [ -f "$TMP_DIR/system_dlkm.new.dat${BROTLI_EXTENSION}" ] && HAS_SYSTEM_DLKM=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
+    [ -f "$TMP_DIR/system.new.dat.br" ] && HAS_SYSTEM=true
+    [ -f "$TMP_DIR/vendor.new.dat.br" ] && HAS_VENDOR=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
+    [ -f "$TMP_DIR/product.new.dat.br" ] && HAS_PRODUCT=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
+    [ -f "$TMP_DIR/system_ext.new.dat.br" ] && HAS_SYSTEM_EXT=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
+    [ -f "$TMP_DIR/odm.new.dat.br" ] && HAS_ODM=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
+    [ -f "$TMP_DIR/vendor_dlkm.new.dat.br" ] && HAS_VENDOR_DLKM=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
+    [ -f "$TMP_DIR/odm_dlkm.new.dat.br" ] && HAS_ODM_DLKM=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
+    [ -f "$TMP_DIR/system_dlkm.new.dat.br" ] && HAS_SYSTEM_DLKM=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
     [ -f "$SRC_DIR/target/$TARGET_CODENAME/postinstall.edify" ] && HAS_POST_INSTALL=true
 
     {
@@ -360,7 +358,7 @@ GENERATE_UPDATER_SCRIPT()
             echo -n "$(bc -l <<< "9 - $PARTITION_COUNT")"
             echo    '00000, 0);'
             echo -n 'block_image_update(map_partition("system"), package_extract_file("system.transfer.list"), "'
-            echo -n "system.new.dat${BROTLI_EXTENSION}"
+            echo -n "system.new.dat.br"
             echo    '", "system.patch.dat") ||'
             echo    '  abort("E1001: Failed to update system image.");'
         fi
@@ -369,7 +367,7 @@ GENERATE_UPDATER_SCRIPT()
             echo    'ui_print("Patching vendor image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
             echo -n 'block_image_update(map_partition("vendor"), package_extract_file("vendor.transfer.list"), "'
-            echo -n "vendor.new.dat${BROTLI_EXTENSION}"
+            echo -n "vendor.new.dat.br"
             echo    '", "vendor.patch.dat") ||'
             echo    '  abort("E2001: Failed to update vendor image.");'
         fi
@@ -378,7 +376,7 @@ GENERATE_UPDATER_SCRIPT()
             echo    'ui_print("Patching product image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
             echo -n 'block_image_update(map_partition("product"), package_extract_file("product.transfer.list"), "'
-            echo -n "product.new.dat${BROTLI_EXTENSION}"
+            echo -n "product.new.dat.br"
             echo    '", "product.patch.dat") ||'
             echo    '  abort("E2001: Failed to update product image.");'
         fi
@@ -387,7 +385,7 @@ GENERATE_UPDATER_SCRIPT()
             echo    'ui_print("Patching system_ext image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
             echo -n 'block_image_update(map_partition("system_ext"), package_extract_file("system_ext.transfer.list"), "'
-            echo -n "system_ext.new.dat${BROTLI_EXTENSION}"
+            echo -n "system_ext.new.dat.br"
             echo    '", "system_ext.patch.dat") ||'
             echo    '  abort("E2001: Failed to update system_ext image.");'
         fi
@@ -396,7 +394,7 @@ GENERATE_UPDATER_SCRIPT()
             echo    'ui_print("Patching odm image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
             echo -n 'block_image_update(map_partition("odm"), package_extract_file("odm.transfer.list"), "'
-            echo -n "odm.new.dat${BROTLI_EXTENSION}"
+            echo -n "odm.new.dat.br"
             echo    '", "odm.patch.dat") ||'
             echo    '  abort("E2001: Failed to update odm image.");'
         fi
@@ -405,7 +403,7 @@ GENERATE_UPDATER_SCRIPT()
             echo    'ui_print("Patching vendor_dlkm image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
             echo -n 'block_image_update(map_partition("vendor_dlkm"), package_extract_file("vendor_dlkm.transfer.list"), "'
-            echo -n "vendor_dlkm.new.dat${BROTLI_EXTENSION}"
+            echo -n "vendor_dlkm.new.dat.br"
             echo    '", "vendor_dlkm.patch.dat") ||'
             echo    '  abort("E2001: Failed to update vendor_dlkm image.");'
         fi
@@ -414,7 +412,7 @@ GENERATE_UPDATER_SCRIPT()
             echo    'ui_print("Patching odm_dlkm image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
             echo -n 'block_image_update(map_partition("odm_dlkm"), package_extract_file("odm_dlkm.transfer.list"), "'
-            echo -n "odm_dlkm.new.dat${BROTLI_EXTENSION}"
+            echo -n "odm_dlkm.new.dat.br"
             echo    '", "odm_dlkm.patch.dat") ||'
             echo    '  abort("E2001: Failed to update odm_dlkm image.");'
         fi
@@ -423,7 +421,7 @@ GENERATE_UPDATER_SCRIPT()
             echo    'ui_print("Patching system_dlkm image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
             echo -n 'block_image_update(map_partition("system_dlkm"), package_extract_file("system_dlkm.transfer.list"), "'
-            echo -n "system_dlkm.new.dat${BROTLI_EXTENSION}"
+            echo -n "system_dlkm.new.dat.br"
             echo    '", "system_dlkm.patch.dat") ||'
             echo    '  abort("E2001: Failed to update system_dlkm image.");'
         fi
@@ -571,12 +569,13 @@ while IFS= read -r f; do
     EVAL "img2sdat -o \"$TMP_DIR\" \"$f\"" || exit 1
     rm -f "$f"
 
-    if ! $DEBUG; then
-        LOG "- Compressing $PARTITION.new.dat"
-        # https://android.googlesource.com/platform/build/+/refs/tags/android-15.0.0_r1/tools/releasetools/common.py#3585
-        EVAL "brotli --quality=6 --output=\"$TMP_DIR/$PARTITION.new.dat.br\" \"$TMP_DIR/$PARTITION.new.dat\"" || exit 1
-        rm -f "$TMP_DIR/$PARTITION.new.dat"
-    fi
+    COMPRESSION_LEVEL=0
+    ! $DEBUG && COMPRESSION_LEVEL=6
+
+    LOG "- Compressing $PARTITION.new.dat"
+    # https://android.googlesource.com/platform/build/+/refs/tags/android-15.0.0_r1/tools/releasetools/common.py#3585
+    EVAL "brotli --quality=\"$COMPRESSION_LEVEL\" --output=\"$TMP_DIR/$PARTITION.new.dat.br\" \"$TMP_DIR/$PARTITION.new.dat\"" || exit 1
+    rm -f "$TMP_DIR/$PARTITION.new.dat"
 done < <(find "$TMP_DIR" -maxdepth 1 -type f -name "*.img")
 
 if [ -d "$WORK_DIR/kernel" ]; then
