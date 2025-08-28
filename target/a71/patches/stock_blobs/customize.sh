@@ -1,6 +1,24 @@
-ADD_TO_WORK_DIR "a52qnsxx" "system" "system/lib/libSlowShutter_jni.media.samsung.so" 0 0 644 "u:object_r:system_lib_file:s0"
-ADD_TO_WORK_DIR "a52qnsxx" "system" "system/lib64/libSlowShutter_jni.media.samsung.so" 0 0 644 "u:object_r:system_lib_file:s0"
-ADD_TO_WORK_DIR "a52qnsxx" "system" "system/lib64/libsamsung_videoengine_9_0.so" 0 0 644 "u:object_r:system_lib_file:s0"
+LOG_STEP_IN "- Adding a73xqxx MIDAS"
+DELETE_FROM_WORK_DIR "vendor" "etc/midas"
+ADD_TO_WORK_DIR "a73xqxx" "vendor" "etc/midas"
+LOG_STEP_OUT
+
+LOG_STEP_IN "- Fixing MIDAS model detection"
+sed -i "s/a73xq/a71/g" "$WORK_DIR/vendor/etc/midas/midas_config.json"
+sed -i "s/ro.product.device/ro.product.vendor.device/g" "$WORK_DIR/vendor/etc/midas/midas_config.json"
+LOG_STEP_OUT
+
+LOG_STEP_IN "- Fixing MIDAS, AI and camera"
+ADD_TO_WORK_DIR "a73xqxx" "system" "system/etc/public.libraries-camera.samsung.txt"
+ADD_TO_WORK_DIR "a73xqxx" "system" "system/lib64/libSlowShutter_jni.media.samsung.so"
+ADD_TO_WORK_DIR "a73xqxx" "system" "system/lib64/lib_nativeJni.dk.samsung.so"
+ADD_TO_WORK_DIR "a73xqxx" "system" "system/lib64/libmidas_DNNInterface.camera.samsung.so"
+ADD_TO_WORK_DIR "a73xqxx" "system" "system/lib64/libmidas_core.camera.samsung.so"
+ADD_TO_WORK_DIR "a73xqxx" "system" "system/lib64/libsamsung_videoengine_9_0.so"
+ADD_TO_WORK_DIR "a73xqxx" "system" "system/lib64/libtensorflowLite.camera.samsung.so"
+ADD_TO_WORK_DIR "a73xqxx" "system" "system/lib64/libtensorflowlite_inference_api.camera.samsung.so"
+ADD_TO_WORK_DIR "a73xqxx" "system" "system/priv-app/PhotoRemasterService/PhotoRemasterService.apk"
+LOG_STEP_OUT
 
 LOG_STEP_IN "- Adding a73xqxx WFD blobs"
 DELETE_FROM_WORK_DIR "system" "system/lib64/libhdcp_client_aidl.so"
@@ -30,12 +48,6 @@ ADD_TO_WORK_DIR "a52qnsxx" "system" "system/lib/lib_SoundBooster_ver1050.so" 0 0
 ADD_TO_WORK_DIR "a52qnsxx" "system" "system/lib/libsamsungSoundbooster_plus_legacy.so" 0 0 644 "u:object_r:system_lib_file:s0"
 ADD_TO_WORK_DIR "a52qnsxx" "system" "system/lib64/lib_SoundBooster_ver1050.so" 0 0 644 "u:object_r:system_lib_file:s0"
 ADD_TO_WORK_DIR "a52qnsxx" "system" "system/lib64/libsamsungSoundbooster_plus_legacy.so" 0 0 644 "u:object_r:system_lib_file:s0"
-LOG_STEP_OUT
-
-LOG_STEP_IN "- Fixing MIDAS"
-ADD_TO_WORK_DIR "a52qnsxx" "vendor" "etc/midas" 0 2000 755 "u:object_r:vendor_configs_file:s0"
-ADD_TO_WORK_DIR "a52qnsxx" "vendor" "etc/VslMesDetector" 0 2000 755 "u:object_r:vendor_configs_file:s0"
-sed -i "s/ro.product.device/ro.product.vendor.device/g" "$WORK_DIR/vendor/etc/midas/midas_config.json"
 LOG_STEP_OUT
 
 LOG_STEP_IN "- Fixing RIL"
