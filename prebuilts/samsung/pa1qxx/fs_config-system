@@ -1,5 +1,13 @@
 system/bin 0 2000 751 capabilities=0x0
 system/bin/surfaceflinger 0 2000 755 capabilities=0x0
+system/etc/default-permissions 0 0 755 capabilities=0x0
+system/etc/default-permissions/default-permissions-com.samsung.android.app.moments.xml 0 0 644 capabilities=0x0
+system/etc/default-permissions/default-permissions-com.samsung.android.smartsuggestions.xml 0 0 644 capabilities=0x0
+system/etc/sysconfig/moments.xml 0 0 644 capabilities=0x0
+system/etc/sysconfig/samsungsmartsuggestions.xml 0 0 644 capabilities=0x0
+system/etc/permissions 0 0 755 capabilities=0x0
+system/etc/permissions/privapp-permissions-com.samsung.android.app.moments.xml 0 0 644 capabilities=0x0
+system/etc/permissions/privapp-permissions-com.samsung.android.smartsuggestions.xml 0 0 644 capabilities=0x0
 system/etc/ringtones_count_list.txt 0 0 644 capabilities=0x0
 system/lib64/libnfc_sec_jni.so 0 0 644 capabilities=0x0
 system/lib64/libnfc-nci_flags.so 0 0 644 capabilities=0x0
