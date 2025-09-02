@@ -31,12 +31,8 @@ jobs:
             path: "prebuilts/samsung/gts9fexx"
           - module: "Galaxy S25 (pa1qxx)"
             path: "prebuilts/samsung/pa1qxx"
-          - module: "Galaxy S22 (r0qxxx)"
-            path: "prebuilts/samsung/r0qxxx"
           - module: "Galaxy S22 (r0sxxx)"
             path: "prebuilts/samsung/r0sxxx"
-          - module: "Galaxy S23 FE (r11sxxx)"
-            path: "prebuilts/samsung/r11sxxx"
           - module: "Galaxy S24 (e1qzcx)"
             path: "prebuilts/samsung/e1qzcx"
 
