@@ -29,7 +29,6 @@ done
 V4A_APK="https://github.com/WSTxda/ViperFX-RE-Releases/releases/download/7.2/viperfx-release.apk"
 APK_PATH="system/preload/Viper4AndroidFX-RE/com.wstxda.viper4android==/base.apk"
 
-LOG "- Adding Viper4AndroidFX-RE.apk to preload apps"
 DOWNLOAD_FILE "$V4A_APK" "$WORK_DIR/system/$APK_PATH"
 
 sed -i "/system\/preload/d" "$WORK_DIR/configs/fs_config-system"

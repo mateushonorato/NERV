@@ -1,3 +1,7 @@
+if [ "$TARGET_SINGLE_SYSTEM_IMAGE" == "self" ]; then
+    return 0
+fi
+
 CERT_PREFIX="aosp_platform"
 $ROM_IS_OFFICIAL && CERT_PREFIX="platform"
 

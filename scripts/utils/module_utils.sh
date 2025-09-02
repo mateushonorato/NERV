@@ -160,6 +160,7 @@ DOWNLOAD_FILE()
     local OUTPUT="$2"
 
     mkdir -p "$(dirname "$OUTPUT")"
+    LOG "- Downloading $(basename "$OUTPUT")"
     curl -L -# -o "$OUTPUT" "$URL"
     return $?
 }

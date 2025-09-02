@@ -25,6 +25,17 @@ if [ ! -f "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" ]; then
     LOG_STEP_OUT
 fi
 
-# https://github.com/3arthur6/BluetoothLibraryPatcher/blob/e22da26ae7eb0856f1342bb565e6aa26a5ccaa73/hexpatch.sh#L12
-HEX_PATCH "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" \
-    "480500352800805228" "530100142800805228"
+# https://github.com/3arthur6/BluetoothLibraryPatcher/blob/master/hexpatch.sh#L12
+if [ "$SOURCE_API_LEVEL" -eq 33 ]; then
+    HEX_PATCH "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" \
+        "6804003528008052" "2a00001428008052"
+elif [ "$SOURCE_API_LEVEL" -eq 34 ]; then
+    HEX_PATCH "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" \
+        "6804003528008052" "2b00001428008052"
+elif [ "$SOURCE_API_LEVEL" -eq 35 ]; then
+    HEX_PATCH "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" \
+        "480500352800805228" "530100142800805228"
+elif [ "$SOURCE_API_LEVEL" -eq 36 ]; then
+    HEX_PATCH "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" \
+        "00122a0140395f01086b00020054" "00122a0140395f01086bde030014"
+fi

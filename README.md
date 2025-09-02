@@ -2,8 +2,8 @@
   <img loading="lazy" src="readme-res/banner.png"/>
 </h1>
 <p align="center">
-  <a href="https://github.com/yagzie/NERV/blob/fifteen/LICENSE"><img loading="lazy" src="https://img.shields.io/github/license/yagzie/NERV?style=for-the-badge&logo=github"/></a>
-  <a href="https://github.com/yagzie/NERV/commits/fifteen"><img loading="lazy" src="https://img.shields.io/github/last-commit/yagzie/NERV/fifteen?style=for-the-badge"/></a>
+  <a href="https://github.com/yagzie/NERV/blob/paradigm/LICENSE"><img loading="lazy" src="https://img.shields.io/github/license/yagzie/NERV?style=for-the-badge&logo=github"/></a>
+  <a href="https://github.com/yagzie/NERV/commits/paradigm"><img loading="lazy" src="https://img.shields.io/github/last-commit/yagzie/NERV/paradigm?style=for-the-badge"/></a>
   <a href="https://github.com/yagzie/NERV/stargazers"><img loading="lazy" src="https://img.shields.io/github/stars/yagzie/NERV?style=for-the-badge"/></a>
   <a href="https://github.com/yagzie/NERV/graphs/contributors"><img loading="lazy" src="https://img.shields.io/github/contributors/yagzie/NERV?style=for-the-badge"/></a>
   <a href="https://github.com/yagzie/NERV/actions/workflows/build.yml"><img loading="lazy" src="https://img.shields.io/github/actions/workflow/status/yagzie/NERV/build.yml?style=for-the-badge"/></a>
@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <a href="https://t.me/groupzie">💬 NERV Telegram</a>
+  <a href="https://t.me/SE_NERV">💬 NERV Telegram</a>
 </p>
 
 # What is UN1CA?
@@ -28,7 +28,10 @@ Any form of contribution, suggestions, bug report or feature request for the pro
 NERV is a fork of UN1CA; to make the build system work with One UI 7, we are aiming for an UN1CA-like experience with what we can do. All changes have been made under GPLv3, if you see any problems about credits at repo, please kindly report to me at Telegram, XDA or email. 
 
 # Features
-- Based on the latest stable Galaxy S23 (Paradigm) / A73 5G (Fun) Firmware
+- Based on the latest Samsung devices firmware:
+  - Galaxy S23 (Paradigm)
+  - Galaxy S23 FE (Paradigm)
+  - Galaxy A73 5G (Fun)
 - Galaxy AI support
 - App Lock Support
 - High end animations
@@ -36,7 +39,6 @@ NERV is a fork of UN1CA; to make the build system work with One UI 7, we are aim
 - ASKS disabled 
 - APK Downgrade support
 - Native/live blur support (Paradigm)
-- AOD clock transition support
 - Adaptive refresh rate support (Paradigm)
 - Extra brightness support
 - Picture remaster support
@@ -69,8 +71,8 @@ A big thanks goes to the following for their invaluable contributions in no part
 - **[ananjaser1211](https://github.com/ananjaser1211)** for troubleshooting and his time
 - **[iDrinkCoffee](https://github.com/iDrinkCoffee-TG)** and **[RisenID](https://github.com/RisenID)** for documentation revisioning
 - **[LineageOS Team](https://www.lineageos.org/)** for their original [OTA updater implementation](https://github.com/LineageOS/android_packages_apps_Updater)
-- **[All Kangers]** for making me laugh with your rebranded repos with no difference
 - **[Bobert10](https://t.me/bobert10)** for the NERV banner
+- **[All Kangers]** for making me laugh with your rebranded repos with no difference
 - *All the UN1CA project contributors and testers ❤️*
 
 # Stargazers over time
