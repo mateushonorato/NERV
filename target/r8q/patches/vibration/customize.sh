@@ -1,0 +1,11 @@
+LOG_STEP_IN "- Fixing Vibrator"
+DELETE_FROM_WORK_DIR "vendor" "bin/hw/vendor.samsung.hardware.vibrator@2.2-service"
+DELETE_FROM_WORK_DIR "vendor" "etc/init/vendor.samsung.hardware.vibrator@2.2-service.rc"
+DELETE_FROM_WORK_DIR "vendor" "lib64/vendor.samsung.hardware.vibrator@2.0.so"
+DELETE_FROM_WORK_DIR "vendor" "lib64/vendor.samsung.hardware.vibrator@2.1.so"
+DELETE_FROM_WORK_DIR "vendor" "lib64/vendor.samsung.hardware.vibrator@2.2.so"
+ADD_TO_WORK_DIR "r9qxxx" "vendor" "bin/hw/vendor.samsung.hardware.vibrator-service"
+ADD_TO_WORK_DIR "r9qxxx" "vendor" "etc/init/vendor.samsung.hardware.vibrator-default.rc"
+ADD_TO_WORK_DIR "r9qxxx" "vendor" "etc/vintf/manifest/vendor.samsung.hardware.vibrator-default.xml"
+ADD_TO_WORK_DIR "r9qxxx" "vendor" "lib64/vendor.samsung.hardware.vibrator-V3-ndk_platform.so"
+LOG_STEP_OUT
