@@ -1,0 +1,4 @@
+id=stock
+name=Stock blobs
+author=salvogiangri, JeyKul, ravichaudhary133, mateushonorato
+description=Replaces generic source blobs with target ones.
