@@ -1,4 +1,5 @@
 TARGET_FIRMWARE_PATH="$FW_DIR/$(echo -n "$TARGET_FIRMWARE" | sed 's./._.g' | rev | cut -d "_" -f2- | rev)"
+LOG_STEP_IN "- Add stock camera libs"
 
 if ! grep -q "Camera End" "$WORK_DIR/vendor/ueventd.rc"; then
     echo -e "\n" >> "$WORK_DIR/vendor/ueventd.rc"
@@ -59,7 +60,6 @@ do
     DELETE_FROM_WORK_DIR "system" "$blob"
 done
 
-echo "Add stock camera libs"
 BLOBS_LIST="
 system/etc/public.libraries-arcsoft.txt
 system/lib64/libAiSolution_wrapper_v1.camera.samsung.so
@@ -100,8 +100,9 @@ done
 {
     echo "libLttEngine.camera.samsung.so"
 } >> "$WORK_DIR/system/system/etc/public.libraries-camera.samsung.txt"
+LOG_STEP_OUT
 
-echo "Fix AI Photo Editor"
+LOG_STEP_IN "- Fix AI Photo Editor"
 cp -a --preserve=all \
     "$TARGET_FIRMWARE_PATH/system/system/cameradata/portrait_data/single_bokeh_feature.json" \
     "$WORK_DIR/system/system/cameradata/portrait_data/unica_bokeh_feature.json"
@@ -109,3 +110,4 @@ SET_METADATA "system" "system/cameradata/portrait_data/unica_bokeh_feature.json"
 sed -i \
     's/system\/cameradata\/portrait_data\/single_bokeh_feature.json/system\/cameradata\/portrait_data\/unica_bokeh_feature.json\x00/g' \
     "$WORK_DIR/system/system/lib64/libPortraitSolution.camera.samsung.so"
+LOG_STEP_OUT
