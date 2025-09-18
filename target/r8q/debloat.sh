@@ -101,3 +101,15 @@ lib64/vendor.qti.qccvndhal_aidl-V1-ndk.so
 priv-app/com.qualcomm.location
 priv-app/com.qualcomm.qti.services.systemhelper
 "
+# Emoji
+SYSTEM_DEBLOAT+="
+system/priv-app/AREmoji
+system/priv-app/AREmojiEditor
+system/priv-app/AvatarEmojiSticker
+"
+
+# BixbyVision
+SYSTEM_DEBLOAT+="
+system/app/VisionIntelligence3.7
+system/priv-app/BixbyVisionFramework3.5
+"
