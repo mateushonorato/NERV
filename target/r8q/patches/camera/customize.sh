@@ -102,6 +102,12 @@ done
 } >> "$WORK_DIR/system/system/etc/public.libraries-camera.samsung.txt"
 LOG_STEP_OUT
 
+LOG_STEP_IN "- Adding a73xqxx camera blobs"
+ADD_TO_WORK_DIR "a73xqxx" "system" "system/lib/libSlowShutter_jni.media.samsung.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "a73xqxx" "system" "system/lib64/libSlowShutter_jni.media.samsung.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "a73xqxx" "system" "system/lib64/libsamsung_videoengine_9_0.so" 0 0 644 "u:object_r:system_lib_file:s0"
+LOG_STEP_OUT
+
 LOG_STEP_IN "- Fix AI Photo Editor"
 cp -a --preserve=all \
     "$TARGET_FIRMWARE_PATH/system/system/cameradata/portrait_data/single_bokeh_feature.json" \
