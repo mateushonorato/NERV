@@ -5,9 +5,9 @@ ADD_TO_WORK_DIR "a73xqxx" "product" "priv-app/HotwordEnrollmentOKGoogleEx3HEXAGO
 ADD_TO_WORK_DIR "a73xqxx" "product" "priv-app/HotwordEnrollmentXGoogleEx3HEXAGON" 0 0 755 "u:object_r:system_file:s0"
 LOG_STEP_OUT
 
-LOG_STEP_IN "- Fixing brightness [Light HAL from A73XQ]"
-ADD_TO_WORK_DIR "a73xqxx" "vendor" "bin/hw/vendor.samsung.hardware.light-service"
-ADD_TO_WORK_DIR "a73xqxx" "vendor" "lib64/vendor.samsung.hardware.light-V1-ndk_platform.so"
+LOG_STEP_IN "- Fixing auto brightness [Light HAL from r9qxxx]"
+ADD_TO_WORK_DIR "r9qxxx" "vendor" "bin/hw/vendor.samsung.hardware.light-service"
+ADD_TO_WORK_DIR "r9qxxx" "vendor" "lib64/vendor.samsung.hardware.light-V1-ndk_platform.so"
 LOG_STEP_OUT
 
 LOG_STEP_IN "- Add stock ev_lux_map_config.xml"
