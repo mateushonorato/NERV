@@ -3,3 +3,6 @@ ro.camerax.extensions.enabled=
 
 # Netflix
 ro.netflix.bsp_rev=Q7250-19133-1
+
+# Fix RIL on Android 16
+ro.telephony.sim_slots.count=2
