@@ -1,42 +1,47 @@
-From 8b5448c9e5b1ff9a3e4fc06b4f550888e24a737f Mon Sep 17 00:00:00 2001
+From a63967589a1f1841b28c22d68df1428edadd7bfb Mon Sep 17 00:00:00 2001
 From: Salvo Giangreco <giangrecosalvo9@gmail.com>
-Date: Thu, 5 Jun 2025 00:07:16 +0300
+Date: Thu, 9 Oct 2025 14:36:18 +0800
 Subject: [PATCH] Introduce SamsungPropsHooks
 
 ---
  smali/android/app/Instrumentation.smali       |   4 +
- .../android/os/SystemProperties.smali         |  14 +
+ .../android/os/SystemProperties.smali         |  18 +-
  .../io/mesalabs/unica/SamsungPropsHooks.smali | 494 ++++++++++++++++++
- 3 files changed, 512 insertions(+)
+ 3 files changed, 514 insertions(+), 2 deletions(-)
  create mode 100644 smali_classes6/io/mesalabs/unica/SamsungPropsHooks.smali
 
 diff --git a/smali/android/app/Instrumentation.smali b/smali/android/app/Instrumentation.smali
-index 0d935feb..3cd0312c 100644
+index 82c86f26..7d00408e 100644
 --- a/smali/android/app/Instrumentation.smali
 +++ b/smali/android/app/Instrumentation.smali
-@@ -780,6 +780,8 @@
+@@ -746,6 +746,8 @@
  
-     invoke-virtual {v0, p1}, Landroid/app/Application;->attach(Landroid/content/Context;)V
+     invoke-virtual {p0, p1}, Landroid/app/Application;->attach(Landroid/content/Context;)V
  
 +    invoke-static {p1}, Lio/mesalabs/unica/SamsungPropsHooks;->init(Landroid/content/Context;)V
 +
-     return-object v0
+     return-object p0
  .end method
  
-@@ -4784,6 +4786,8 @@
+@@ -4336,6 +4338,8 @@
  
-     invoke-virtual {v0, p3}, Landroid/app/Application;->attach(Landroid/content/Context;)V
+     invoke-virtual {p0, p3}, Landroid/app/Application;->attach(Landroid/content/Context;)V
  
 +    invoke-static {p3}, Lio/mesalabs/unica/SamsungPropsHooks;->init(Landroid/content/Context;)V
 +
-     return-object v0
+     return-object p0
  .end method
  
 diff --git a/smali_classes3/android/os/SystemProperties.smali b/smali_classes3/android/os/SystemProperties.smali
-index 645f7902..43361758 100644
+index 3af84b7b..6a9da926 100644
 --- a/smali_classes3/android/os/SystemProperties.smali
 +++ b/smali_classes3/android/os/SystemProperties.smali
-@@ -383,10 +383,17 @@
+@@ -373,26 +373,40 @@
+ .end method
+ 
+ .method public static whitelist get(Ljava/lang/String;)Ljava/lang/String;
+-    .locals 0
++    .locals 1
      .annotation runtime Landroid/annotation/SystemApi;
      .end annotation
  
@@ -48,13 +53,15 @@ index 645f7902..43361758 100644
 +
      invoke-static {p0}, Landroid/os/SystemProperties;->native_get(Ljava/lang/String;)Ljava/lang/String;
  
-     move-result-object v0
+     move-result-object p0
  
 +    :cond_0
-     return-object v0
+     return-object p0
  .end method
  
-@@ -395,10 +402,17 @@
+ .method public static whitelist get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+-    .locals 0
++    .locals 1
      .annotation runtime Landroid/annotation/SystemApi;
      .end annotation
  
@@ -66,10 +73,10 @@ index 645f7902..43361758 100644
 +
      invoke-static {p0, p1}, Landroid/os/SystemProperties;->native_get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
  
-     move-result-object v0
+     move-result-object p0
  
 +    :cond_0
-     return-object v0
+     return-object p0
  .end method
  
 diff --git a/smali_classes6/io/mesalabs/unica/SamsungPropsHooks.smali b/smali_classes6/io/mesalabs/unica/SamsungPropsHooks.smali
@@ -573,5 +580,5 @@ index 00000000..9703a41a
 +    return-void
 +.end method
 -- 
-2.43.0
+2.50.1
 

@@ -1,16 +1,17 @@
-From 4d763d2c227b028a6cbfac1d8ec196b89c392b2e Mon Sep 17 00:00:00 2001
+From 96ac5cdfcf0766321569a24f220029bbe0d772d6 Mon Sep 17 00:00:00 2001
 From: Louis Poier <lpoier7@proton.me>
-Date: Sun, 20 Apr 2025 17:19:17 +0200
+Date: Wed, 8 Oct 2025 08:15:19 +0800
 Subject: [PATCH] Nuke BlockchainTZService
 
 Signed-off-by: Louis Poier <lpoier7@proton.me>
 Signed-off-by: utkustnr <utkuustuner@proton.me>
+Signed-off-by: Samuel Pascua <pascua.samuel.14@gmail.com>
 ---
  ...temServer$$ExternalSyntheticLambda10.smali | 31 -------------------
  1 file changed, 31 deletions(-)
 
 diff --git a/smali/com/android/server/SystemServer$$ExternalSyntheticLambda10.smali b/smali/com/android/server/SystemServer$$ExternalSyntheticLambda10.smali
-index 3b946d42..1017058c 100644
+index 2604573..2591fc2 100644
 --- a/smali/com/android/server/SystemServer$$ExternalSyntheticLambda10.smali
 +++ b/smali/com/android/server/SystemServer$$ExternalSyntheticLambda10.smali
 @@ -69,37 +69,6 @@
@@ -26,11 +27,11 @@ index 3b946d42..1017058c 100644
 -
 -    const-string/jumbo v3, "blockchain"
 -
--    new-instance v4, Lcom/android/server/SystemServer$4;
+-    new-instance v4, Lcom/android/server/SystemServer$5;
 -
--    const/4 v5, 0x4
+-    const/4 v5, 0x5
 -
--    invoke-direct {v4, v5}, Lcom/android/server/SystemServer$4;-><init>(I)V
+-    invoke-direct {v4, v5}, Lcom/android/server/SystemServer$5;-><init>(I)V
 -
 -    invoke-static {v3, v4}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IServiceCreator;)V
 -    :try_end_1
@@ -48,9 +49,9 @@ index 3b946d42..1017058c 100644
 -    :goto_1
 -    invoke-virtual {v2}, Landroid/util/TimingsTraceLog;->traceEnd()V
 -
-     const-string v3, "SemAuthnrService"
+     const-string/jumbo v3, "SemAuthnrService"
  
      invoke-virtual {v2, v3}, Lcom/android/server/utils/TimingsTraceAndSlog;->traceBegin(Ljava/lang/String;)V
 -- 
-2.49.0
+2.50.1
 

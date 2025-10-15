@@ -31,7 +31,6 @@ if [[ "$SOURCE_PRODUCT_FIRST_API_LEVEL" != "$TARGET_PRODUCT_FIRST_API_LEVEL" ]];
     system/framework/services.jar/smali/com/android/server/SystemServer.smali
     system/framework/services.jar/smali/com/android/server/enterprise/hdm/HdmVendorController.smali
     system/framework/services.jar/smali/com/android/server/knox/dar/ddar/ta/TAProxy.smali
-    system/framework/services.jar/smali_classes2/com/android/server/power/PowerManagerUtil.smali
     "
     for f in $FTP; do
         sed -i \
@@ -89,8 +88,8 @@ if [[ "$SOURCE_AUTO_BRIGHTNESS_TYPE" != "$TARGET_AUTO_BRIGHTNESS_TYPE" ]]; then
     DECODE_APK "system" "system/framework/ssrm.jar"
     DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
 
+    # system/framework/services.jar/smali_classes2/com/android/server/power/PowerManagerUtil.smali
     FTP="
-    system/framework/services.jar/smali_classes2/com/android/server/power/PowerManagerUtil.smali
     system/framework/ssrm.jar/smali/com/android/server/ssrm/PreMonitor.smali
     system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/Rune.smali
     "
@@ -121,7 +120,11 @@ if [[ "$(GET_FP_SENSOR_TYPE "$SOURCE_FP_SENSOR_CONFIG")" != "$(GET_FP_SENSOR_TYP
 
     if [[ "$TARGET_SINGLE_SYSTEM_IMAGE" == "qssi" ]]; then
         if [[ "$(GET_FP_SENSOR_TYPE "$TARGET_FP_SENSOR_CONFIG")" == "optical" ]]; then
+            ADD_TO_WORK_DIR "a36xqnaxx" "system" "system/bin/app_process64"
+            ADD_TO_WORK_DIR "a36xqnaxx" "system" "system/bin/bootanimation"
+            ADD_TO_WORK_DIR "a36xqnaxx" "system" "system/bin/mediaserver"
             ADD_TO_WORK_DIR "a36xqnaxx" "system" "system/bin/surfaceflinger"
+            ADD_TO_WORK_DIR "a36xqnaxx" "system" "system/lib64/libandroid_runtime.so"
             ADD_TO_WORK_DIR "a36xqnaxx" "system" "system/lib64/libgui.so"
             ADD_TO_WORK_DIR "a36xqnaxx" "system" "system/lib64/libui.so"
             APPLY_PATCH "system" "system/framework/services.jar" "$SRC_DIR/unica/patches/product_feature/fingerprint/qssi/services.jar/0001-Set-FP_FEATURE_SENSOR_IS_ULTRASONIC-to-false.patch"
@@ -201,7 +204,7 @@ if [[ "$SOURCE_MDNIE_SUPPORTED_MODES" != "$TARGET_MDNIE_SUPPORTED_MODES" ]] || \
     DECODE_APK "system" "system/framework/services.jar"
 
     FTP="
-    system/framework/services.jar/smali_classes2/com/samsung/android/hardware/display/SemMdnieManagerService.smali
+    system/framework/framework.jar/smali_classes6/com/samsung/android/hardware/display/SemMdnieManager.smali
     "
     for f in $FTP; do
         sed -i "s/\"$SOURCE_MDNIE_SUPPORTED_MODES\"/\"$TARGET_MDNIE_SUPPORTED_MODES\"/g" "$APKTOOL_DIR/$f"
@@ -209,6 +212,7 @@ if [[ "$SOURCE_MDNIE_SUPPORTED_MODES" != "$TARGET_MDNIE_SUPPORTED_MODES" ]] || \
     done
     LOG_STEP_OUT
 fi
+
 #if $SOURCE_HAS_HW_MDNIE; then
 #    if ! $TARGET_HAS_HW_MDNIE; then
 #        echo "Applying HW mDNIe patches"
@@ -274,8 +278,8 @@ if [[ "$SOURCE_HFR_MODE" != "$TARGET_HFR_MODE" ]]; then
     system/framework/framework.jar/smali_classes6/com/samsung/android/rune/CoreRune.smali
     system/framework/gamemanager.jar/smali/com/samsung/android/game/GameManagerService.smali
     system/framework/secinputdev-service.jar/smali/com/samsung/android/hardware/secinputdev/SemInputDeviceManagerService.smali
-    system/framework/secinputdev-service.jar/smali/com/samsung/android/hardware/secinputdev/SemInputFeatures.smali
-    system/framework/secinputdev-service.jar/smali/com/samsung/android/hardware/secinputdev/SemInputFeaturesExtra.smali
+    system/framework/secinputdev-service.jar/smali/com/samsung/android/hardware/secinputdev/utils/SemInputFeatures.smali
+    system/framework/secinputdev-service.jar/smali/com/samsung/android/hardware/secinputdev/utils/SemInputFeaturesExtra.smali
     system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/display/SecDisplayUtils.smali
     system/priv-app/SettingsProvider/SettingsProvider.apk/smali/com/android/providers/settings/DatabaseHelper.smali
     system_ext/priv-app/SystemUI/SystemUI.apk/smali/com/android/systemui/LsRune.smali
@@ -347,7 +351,7 @@ if [[ "$SOURCE_MULTI_MIC_MANAGER_VERSION" != "$TARGET_MULTI_MIC_MANAGER_VERSION"
     DECODE_APK "system" "system/framework/framework.jar"
 
     FTP="
-    system/framework/framework.jar/smali_classes5/com/samsung/android/camera/mic/SemMultiMicManager.smali
+    system/framework/framework.jar/smali_classes6/com/samsung/android/camera/mic/SemMultiMicManager.smali
     "
     for f in $FTP; do
         sed -i "s/$SOURCE_MULTI_MIC_MANAGER_VERSION/$TARGET_MULTI_MIC_MANAGER_VERSION/g" "$APKTOOL_DIR/$f"
@@ -391,10 +395,8 @@ if $SOURCE_IS_ESIM_SUPPORTED; then
     fi
 fi
 
-if [[ "$TARGET_CODENAME" == "a52sxq" ]] || [[ "$TARGET_CODENAME" == "a73xq" ]] || [[ "$TARGET_CODENAME" == "m52xq" ]]; then
-    APPLY_PATCH "system" "system/priv-app/SamsungDeviceHealthManagerService/SamsungDeviceHealthManagerService.apk" \
+APPLY_PATCH "system" "system/priv-app/SamsungDeviceHealthManagerService/SamsungDeviceHealthManagerService.apk" \
         "$SRC_DIR/unica/patches/product_feature/ssrm/SamsungDeviceHealthManagerService.apk/0001-Nuke-SSRM-Warning-dialog.patch"
-fi
 
 if [ ! -f "$FW_DIR/${MODEL}_${REGION}/vendor/etc/permissions/android.hardware.strongbox_keystore.xml" ]; then
     LOG_STEP_IN "- Applying strongbox patches"

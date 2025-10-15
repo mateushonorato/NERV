@@ -1,33 +1,31 @@
-From d316af27f85e2057d67b015a70c4fece9d7e8164 Mon Sep 17 00:00:00 2001
+From 12228026e5d188b421cdd5e16ad171cd8560a100 Mon Sep 17 00:00:00 2001
 From: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
-Date: Sat, 26 Apr 2025 20:02:42 +0300
+Date: Wed, 8 Oct 2025 08:17:59 +0800
 Subject: [PATCH] Nuke MPOS Service
 
-Signed-off-by: utkustnr <utkuustuner@proton.me>
+Signed-off-by: Samuel Pascua <pascua.samuel.14@gmail.com>
 ---
- ...temServer$$ExternalSyntheticLambda10.smali | 31 -------------------
- 1 file changed, 31 deletions(-)
+ ...temServer$$ExternalSyntheticLambda10.smali | 28 -------------------
+ 1 file changed, 28 deletions(-)
 
 diff --git a/smali/com/android/server/SystemServer$$ExternalSyntheticLambda10.smali b/smali/com/android/server/SystemServer$$ExternalSyntheticLambda10.smali
-index 1017058c..76cb5c2d 100644
+index 2591fc2..46ed676 100644
 --- a/smali/com/android/server/SystemServer$$ExternalSyntheticLambda10.smali
 +++ b/smali/com/android/server/SystemServer$$ExternalSyntheticLambda10.smali
-@@ -149,37 +149,6 @@
+@@ -149,34 +149,6 @@
      invoke-virtual {v2}, Landroid/util/TimingsTraceLog;->traceEnd()V
  
      :cond_0
--    const-string p0, "MPOS Service"
+-    const-string/jumbo p0, "MPOS Service"
 -
 -    invoke-virtual {v2, p0}, Lcom/android/server/utils/TimingsTraceAndSlog;->traceBegin(Ljava/lang/String;)V
 -
 -    :try_start_5
 -    const-string/jumbo p0, "mpos_service"
 -
--    new-instance v3, Lcom/android/server/SystemServer$4;
+-    new-instance v3, Lcom/android/server/SystemServer$5;
 -
--    const/4 v4, 0x6
--
--    invoke-direct {v3, v4}, Lcom/android/server/SystemServer$4;-><init>(I)V
+-    invoke-direct {v3, v0}, Lcom/android/server/SystemServer$5;-><init>(I)V
 -
 -    invoke-static {p0, v3}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IServiceCreator;)V
 -    :try_end_5
@@ -38,18 +36,17 @@ index 1017058c..76cb5c2d 100644
 -    :catch_0
 -    move-exception p0
 -
--    const-string v3, "MPOS - failed to add MPOS Manager Service "
+-    const-string/jumbo v0, "MPOS - failed to add MPOS Manager Service "
 -
--    invoke-static {v1, v3}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
+-    invoke-static {v1, v0}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
 -
 -    invoke-virtual {p0}, Ljava/lang/Exception;->printStackTrace()V
 -
 -    :goto_5
 -    invoke-virtual {v2}, Landroid/util/TimingsTraceLog;->traceEnd()V
--
+ 
      const-string p0, "Email Keystore Service"
  
-     invoke-virtual {v2, p0}, Lcom/android/server/utils/TimingsTraceAndSlog;->traceBegin(Ljava/lang/String;)V
 -- 
-2.49.0
+2.50.1
 

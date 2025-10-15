@@ -31,6 +31,7 @@ etc/dpolicy
 # Samsung SIM Unlock
 SYSTEM_DEBLOAT+="
 system/bin/ssud
+system/etc/init/ssu_dm1qxxx.rc
 system/etc/init/ssu.rc
 system/etc/permissions/privapp-permissions-com.samsung.ssu.xml
 system/etc/sysconfig/samsungsimunlock.xml
@@ -73,12 +74,13 @@ priv-app/SearchSelector
 "
 
 SYSTEM_DEBLOAT+="
-system/app/DRParser
 system/app/KidsHome_Installer
 system/app/FBAppManager_NS
 system/app/MoccaMobile
 system/app/PlayAutoInstallConfig
 system/app/SamsungPassAutofill_v1
+system/app/SamsungTTSVoice_ar_AE_m00
+system/app/SamsungTTSVoice_id_ID_f00
 system/app/SamsungTTSVoice_de_DE_f00
 system/app/SamsungTTSVoice_en_GB_f00
 system/app/SamsungTTSVoice_en_US_l03
@@ -101,7 +103,6 @@ system/etc/permissions/privapp-permissions-com.samsung.android.carkey.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.cidmanager.xml
 system/etc/permissions/privapp-permissions-com.sec.android.app.dexonpc.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.dkey.xml
-system/etc/permissions/privapp-permissions-com.samsung.android.providers.factory.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.samsungpass.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.spayfw.xml
 system/etc/permissions/privapp-permissions-com.sec.android.app.factorykeystring.xml
@@ -125,18 +126,16 @@ system/preload
 system/priv-app/AuthFramework
 system/priv-app/BCService
 system/priv-app/CIDManager
-system/priv-app/DeviceKeystring
 system/priv-app/DeXonPC
-system/priv-app/DiagMonAgent94
+system/priv-app/DiagMonAgent95
 system/priv-app/DigitalKey
 system/priv-app/FBInstaller_NS
 system/priv-app/FBServices
-system/priv-app/FactoryTestProvider
 system/priv-app/FotaAgent
 system/priv-app/OneDrive_Samsung_v3
 system/priv-app/OMCAgent5
 system/priv-app/PaymentFramework
-system/priv-app/SOAgent75
+system/priv-app/SOAgent76
 system/priv-app/SamsungCarKeyFw
 system/priv-app/SamsungPass
 system/priv-app/YourPhone_P1_5

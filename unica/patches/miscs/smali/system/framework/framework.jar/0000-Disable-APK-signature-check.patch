@@ -1,0 +1,63 @@
+From 9ac86633d07a930cf712c4b0177c9fa55cc080a2 Mon Sep 17 00:00:00 2001
+From: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
+Date: Wed, 8 Oct 2025 22:07:48 +0800
+Subject: [PATCH] Disable APK signature check
+
+---
+ smali/android/content/pm/PackageParser.smali          |  2 +-
+ .../android/util/apk/ApkSignatureVerifier.smali       | 11 +----------
+ .../internal/pm/pkg/parsing/ParsingPackageUtils.smali |  2 +-
+ 3 files changed, 3 insertions(+), 12 deletions(-)
+
+diff --git a/smali/android/content/pm/PackageParser.smali b/smali/android/content/pm/PackageParser.smali
+index fdf9fa10..f319eb53 100644
+--- a/smali/android/content/pm/PackageParser.smali
++++ b/smali/android/content/pm/PackageParser.smali
+@@ -1055,7 +1055,7 @@
+ 
+     if-eqz v1, :cond_0
+ 
+-    const/4 v0, 0x2
++    const/4 v0, 0x1
+ 
+     :cond_0
+     invoke-static {}, Landroid/content/pm/parsing/result/ParseTypeImpl;->forDefaultParsing()Landroid/content/pm/parsing/result/ParseTypeImpl;
+diff --git a/smali_classes4/android/util/apk/ApkSignatureVerifier.smali b/smali_classes4/android/util/apk/ApkSignatureVerifier.smali
+index 22b791cd..8a0e0e0d 100644
+--- a/smali_classes4/android/util/apk/ApkSignatureVerifier.smali
++++ b/smali_classes4/android/util/apk/ApkSignatureVerifier.smali
+@@ -191,17 +191,8 @@
+ .end method
+ 
+ .method public static blacklist getMinimumSignatureSchemeVersionForTargetSdk(I)I
+-    .locals 1
+-
+-    const/16 v0, 0x1e
+-
+-    if-lt p0, v0, :cond_0
+-
+-    const/4 p0, 0x2
+-
+-    return p0
++    .locals 0
+ 
+-    :cond_0
+     const/4 p0, 0x1
+ 
+     return p0
+diff --git a/smali_classes5/com/android/internal/pm/pkg/parsing/ParsingPackageUtils.smali b/smali_classes5/com/android/internal/pm/pkg/parsing/ParsingPackageUtils.smali
+index ecbf9e69..9c918021 100644
+--- a/smali_classes5/com/android/internal/pm/pkg/parsing/ParsingPackageUtils.smali
++++ b/smali_classes5/com/android/internal/pm/pkg/parsing/ParsingPackageUtils.smali
+@@ -893,7 +893,7 @@
+ 
+     if-eqz p3, :cond_0
+ 
+-    const/4 p5, 0x2
++    const/4 p5, 0x1
+ 
+     :cond_0
+     if-eqz p2, :cond_1
+-- 
+2.50.1
+

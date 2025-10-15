@@ -1,18 +1,18 @@
-From 0588e180fa520b6e4b4054bdd14accfe38e48377 Mon Sep 17 00:00:00 2001
+From 904dbc387b8bc50d153a7012fdae2e43e42a2b97 Mon Sep 17 00:00:00 2001
 From: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
-Date: Tue, 29 Apr 2025 19:19:28 +0300
+Date: Wed, 8 Oct 2025 08:20:19 +0800
 Subject: [PATCH] Nuke HDMService
 
-Signed-off-by: utkustnr <utkuustuner@proton.me>
+Signed-off-by: Samuel Pascua <pascua.samuel.14@gmail.com>
 ---
  .../EnterpriseDeviceManagerServiceImpl.smali           | 10 ----------
  1 file changed, 10 deletions(-)
 
 diff --git a/smali/com/android/server/enterprise/EnterpriseDeviceManagerServiceImpl.smali b/smali/com/android/server/enterprise/EnterpriseDeviceManagerServiceImpl.smali
-index ad651fd7..5de37405 100644
+index 0d62108..07ccdc0 100644
 --- a/smali/com/android/server/enterprise/EnterpriseDeviceManagerServiceImpl.smali
 +++ b/smali/com/android/server/enterprise/EnterpriseDeviceManagerServiceImpl.smali
-@@ -2121,16 +2121,6 @@
+@@ -2156,16 +2156,6 @@
  
      invoke-static {v1, p1}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
  
@@ -30,5 +30,5 @@ index ad651fd7..5de37405 100644
  
      sget v0, Lcom/android/server/enterprise/appconfig/ApplicationRestrictionsService;->$r8$clinit:I
 -- 
-2.49.0
+2.50.1
 
