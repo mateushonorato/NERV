@@ -15,15 +15,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-VERSION_MAJOR=1
+VERSION_MAJOR=0
 VERSION_MINOR=0
-VERSION_PATCH=0
+VERSION_PATCH=1
 ROM_VERSION="${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
 # Append current commit hash to version name
 ROM_VERSION+="-$(git rev-parse --short HEAD)"
-
-# Match latest Samsung's flagship device codename
-# - 1.x.x: Diamond (S23)
-# - 2.x.x: Eureka (S24)
-# - 3.x.x: Paradigm (S25)
 ROM_CODENAME="Trem"
