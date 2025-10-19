@@ -14,3 +14,7 @@ sed -i \
     "/use_content_detection/a ro.surface_flinger.set_idle_timer_ms=3000\nro.surface_flinger.set_touch_timer_ms=500\nro.surface_flinger.set_display_power_timer_ms=1000" \
     "$WORK_DIR/vendor/default.prop"
 LOG_STEP_OUT
+
+LOG_STEP_IN "- Fix up sepolicy stuff"
+sed -i s/init.svc.vendor.wvkprov_server_hal//g "$WORK_DIR/system/system/system_ext/etc/selinux/system_ext_property_contexts"
+LOG_STEP_OUT
